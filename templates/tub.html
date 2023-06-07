@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Mar profundo com o Zé</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width = device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='meusite.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  </head>
+  <body>
+    <div id="header">
+      <img src="../static/aguaviva.jpg" alt="agua-viva" style="float:left">
+      <img src="../static/esfera.jpg" alt="esfera" style="float:right;height:168px;">
+      <p style="color:white;font-size:200%;">Bem vindos à página sobre o mar profundo.<br> Nesse site poderemos ver várias fotos de animais super interessantes.<br> Deixe seu comentário e avaliação </p>
+    </div>
+    
+    <div id="left">
+      <br>
+      <br>
+      <form action="/peixe" method="post">
+        <button class="button" type="submit" value="Send Email">peixes</button>
+      </form>
+      <br>
+      <br>
+        <form action="/lula" method="post">
+          <button class="button" type="submit" value="Send Email">lulas</button><br>
+        </form>
+        <br>
+        <br>
+        <form action="/tub" method="post">
+          <button class="button" type="submit" value="Send Email">tubaroes</button>
+        </form>
+        <br>
+        <p style="color:white;">registre-se porfavor</p>
+        <br>
+        <form action="/registro_tub" method="post">
+          <input name="nome" type="text" id="nome" placeholder="nome"/>
+          <br>
+          <br>
+          <input name="senha" type="password" id="senha" placeholder="senha"/>
+          <br>
+          <br>
+         <button class="button" name="action" type="submit" value="regi" >registre-se</button><br>
+         <button class="button" name="action" type="submit" value="entrar" >log in</button><br>
+         <button class="button" name="action" type="submit" value="sair" >log out</button>
+        </form>
+        <p style="color:white;">{{reg}}</p>
+        </div>
+    <div id="right">
+      <div style="text-align: center;">
+        <img src='../static/duende.jpg'>
+        <br>
+        <br>
+        <br>
+        <img src='../static/gro.jpg'>
+        <br>
+        <br>
+        <br>
+        <img src='../static/boca.jpg'>
+      </div>
+      <br>
+      <br>
+      <div class="rating">
+        <input type="radio" name="star" id="star1"><label for="star1"></label>
+        <input type="radio" name="star" id="star2"><label for="star2"></label>
+        <input type="radio" name="star" id="star3"><label for="star3"></label>
+        <input type="radio" name="star" id="star4"><label for="star4"></label>
+        <input type="radio" name="star" id="star5"><label for="star5"></label>
+        </div>
+      <form action="/comentario_tub" method="post">
+        <input name="comentario" type="text" id="comentario" placeholder="deixe seu comentario" size="60"/>
+        <br>
+        <br>
+       <button class="button" name="coment" type="submit" value="coment" >comentario</button>
+      </form>
+      <!-- <p style="color:white;">{{nao_logado_tub}}</p> -->
+      {% if nao_logado_tub != 'é necessário logar para comentar'%}
+        {% for linha in nao_logado_tub %}
+        <p style="color:white;">{{linha}}</p>
+        {% endfor %}
+      {%endif%}
+      {% if nao_logado_tub == 'é necessário logar para comentar'%}
+        <p style="color:white;">{{nao_logado_tub}}</p>
+      {%endif%}
+    </div>
+      <div id="footer">
+        
+        <P style="color:white;font-size:150%;">As imagens foram retiradas do google. Se estão sendo usadas sem permição, por favor me informar por necomaneco@hotmail.com</P>
+      </div>
+    
+  </body>
+</html>
